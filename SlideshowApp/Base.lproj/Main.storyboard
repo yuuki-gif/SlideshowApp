@@ -20,6 +20,9 @@
                                     <constraint firstAttribute="height" constant="30" id="KBF-DF-yKY"/>
                                 </constraints>
                                 <state key="normal" title="再生"/>
+                                <connections>
+                                    <action selector="slideShowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d68-4v-Kbg"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple0001.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Cuj-eo-w0p">
                                 <rect key="frame" x="122" y="184" width="170" height="160"/>
@@ -28,6 +31,9 @@
                                     <constraint firstAttribute="width" constant="170" id="Ekm-Xl-dic"/>
                                     <constraint firstAttribute="height" constant="160" id="hlO-Qu-4Wp"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qEN-gE-tUf" appends="YES" id="x0I-Dp-JT0"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ed5-9h-XWG">
                                 <rect key="frame" x="323" y="394" width="31" height="30"/>
@@ -36,7 +42,7 @@
                                 </constraints>
                                 <state key="normal" title="進む"/>
                                 <connections>
-                                    <action selector="onNextWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2tR-8l-LxX"/>
+                                    <action selector="didTapNextWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GK0-3L-0Ga"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ez-ad-Zom">
@@ -46,7 +52,7 @@
                                 </constraints>
                                 <state key="normal" title="戻る"/>
                                 <connections>
-                                    <action selector="onPrevWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EVF-Nt-XIK"/>
+                                    <action selector="didTapBackButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ecG-Gu-4Dx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -64,15 +70,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="7Ez-ad-Zom" id="JAw-lf-DuJ"/>
                         <outlet property="imageView" destination="Cuj-eo-w0p" id="JAi-ey-sGT"/>
-                        <outlet property="startButton" destination="CiE-zu-nmQ" id="t8b-0q-uKf"/>
+                        <outlet property="nextButton" destination="ed5-9h-XWG" id="uBT-8g-1t6"/>
+                        <outlet property="startButton" destination="CiE-zu-nmQ" id="4Dz-uH-2QD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Dw9-n0-QDa">
+                <tapGestureRecognizer id="qEN-gE-tUf">
                     <connections>
-                        <action selector="tapAction:" destination="BYZ-38-t0r" id="DpT-cm-u22"/>
-                        <segue destination="sfp-AY-QLK" kind="show" id="bbr-SP-GtH"/>
+                        <segue destination="sfp-AY-QLK" kind="show" id="Y5R-eG-6OY"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

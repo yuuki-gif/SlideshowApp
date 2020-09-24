@@ -13,7 +13,6 @@ class ResultViewController: UIViewController {
     // 2画面目のLabelを、StoryboardでこのViewControllerにIBOutletとして接続してお
     @IBOutlet weak var imageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
