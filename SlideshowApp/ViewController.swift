@@ -23,18 +23,31 @@ class ViewController: UIViewController {
         UIImage(named: "apple0003.png")!,
     ]
     
-    // 画像の名前の配列
-    let imageNameArray = [
-        "apple0001.jpg",
-        "apple0002.jpg",
-        "apple0003.png",
-    ]
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // segueから遷移先のResultViewControllerを取得する
         let resultViewController:ResultViewController = segue.destination as! ResultViewController
         //遷移先のイメージビューへ画像を代入する。
         resultViewController.beautifulImage = imageView.image
+        
+        // 停止時の処理を実装
+        // タイマーを停止する
+        timer.invalidate()
+        
+        // タイマーを削除しておく(timer.invalidateだけだとtimerがnilにならないため)
+        timer = nil
+        
+        // ボタンの名前を再生に直しておく
+        startButton.setTitle("再生", for: .normal)
+        
+        //UIButtonを有効化
+        backButton.isEnabled = true
+        //UIButtonを表示
+        backButton.isHidden = false
+        
+        //UIButtonを有効化
+        nextButton.isEnabled = true
+        //UIButtonを表示
+        nextButton.isHidden = false
     }
     
     
@@ -62,16 +75,9 @@ class ViewController: UIViewController {
             dispImageNo = 0
         }
         
-        // 表示している画像の番号から名前を取り出し
-        let name = imageNameArray[dispImageNo]
-        print(name)
-        print(dispImageNo)
-        // 画像を読み込み
-        let image = UIImage(named: name)
         
-        // Image Viewに読み込んだ画像をセット
-        imageView.image = image
-        
+        // indexの画像をstoryboardの画像にセットする
+        imageView.image = imageArray[dispImageNo]
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
@@ -154,15 +160,15 @@ class ViewController: UIViewController {
     }
     @objc func changeImage() {
         // indexを増やして表示する画像を切り替える
-        nowIndex += 1
+        dispImageNo += 1
         
         // indexが表示予定の画像の数と同じ場合
-        if (nowIndex == imageArray.count) {
+        if (dispImageNo == imageArray.count) {
             // indexを一番最初の数字に戻す
-            nowIndex = 0
+            dispImageNo = 0
         }
         // indexの画像をstoryboardの画像にセットする
-        imageView.image = imageArray[nowIndex]
+        imageView.image = imageArray[dispImageNo]
         
     }
 }
