@@ -29,28 +29,33 @@ class ViewController: UIViewController {
         //遷移先のイメージビューへ画像を代入する。
         resultViewController.beautifulImage = imageView.image
         
-        // 停止時の処理を実装
-        // タイマーを停止する
-        timer.invalidate()
+        // 再生中か停止しているかを判定
+        if (timer == nil) {
+            // 再生時の処理を実装、何もしない。
+            
+        } else {
+            // 停止時の処理を実装
+            // タイマーを停止する
+            timer.invalidate()
+            
+            // タイマーを削除しておく(timer.invalidateだけだとtimerがnilにならないため)
+            timer = nil
+            
+            // ボタンの名前を再生に直しておく
+            startButton.setTitle("再生", for: .normal)
+            
+            //UIButtonを有効化
+            backButton.isEnabled = true
+            //UIButtonを表示
+            backButton.isHidden = false
+            
+            //UIButtonを有効化
+            nextButton.isEnabled = true
+            //UIButtonを表示
+            nextButton.isHidden = false
+        }
         
-        // タイマーを削除しておく(timer.invalidateだけだとtimerがnilにならないため)
-        timer = nil
-        
-        // ボタンの名前を再生に直しておく
-        startButton.setTitle("再生", for: .normal)
-        
-        //UIButtonを有効化
-        backButton.isEnabled = true
-        //UIButtonを表示
-        backButton.isHidden = false
-        
-        //UIButtonを有効化
-        nextButton.isEnabled = true
-        //UIButtonを表示
-        nextButton.isHidden = false
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
